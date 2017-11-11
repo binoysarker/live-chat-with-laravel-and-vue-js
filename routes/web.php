@@ -14,7 +14,7 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 Route::resource('/chat','ChatController');
 Route::post('/send','ChatController@send');
@@ -25,3 +25,16 @@ Route::get('/check',function (){
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+/*
+ *Phonebook section
+ */
+
+Route::resource('/phonebook','PhonebookController');
+
+/*Route::get('/phonebook/{name}',function (){
+    return redirect('/');
+})->where('name','[A-Za-z]+');*/
+
+Route::get('/getData','PhonebookController@getData');

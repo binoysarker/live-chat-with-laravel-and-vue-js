@@ -17,7 +17,9 @@ window.Vue = require('vue');
  */
 
 import Vue from 'vue'
+import VueRouter from 'vue-router'
 
+Vue.use(VueRouter);
 
 // use auto scroll
 import VueChatScroll from 'vue-chat-scroll'
@@ -28,10 +30,32 @@ import Toaster from 'v-toaster'
 import 'v-toaster/dist/v-toaster.css'
 Vue.use(Toaster, {timeout: 5000});
 
-Vue.component('app-message', require('./components/Message.vue'));
+Vue.component('app-message', require('./components/Chat/Message.vue'));
+
+// phonebook section
+let Header = require('./components/Phonebook/Header.vue');
+let Footer = require('./components/Phonebook/Footer.vue');
+let Home = require('./components/Phonebook/Home.vue');
+let About = require('./components/Phonebook/About.vue');
+
+const routes = [
+    { path: '/home', component: Home},
+    { path: '/about', component: About }
+];
+
+const router = new VueRouter({
+    // mode:'history',
+    routes // short for `routes: routes`
+});
+
 
 const app = new Vue({
     el: '#app',
+    router,
+    components:{
+        'vue-header': Header,
+        'vue-footer': Footer,
+    },
     data:{
     	message:'',
     	chat:{

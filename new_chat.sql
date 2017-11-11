@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 06, 2017 at 11:25 AM
+-- Generation Time: Nov 11, 2017 at 03:59 AM
 -- Server version: 10.1.25-MariaDB
 -- PHP Version: 7.1.7
 
@@ -56,7 +56,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (1, '2014_10_12_000000_create_users_table', 1),
 (2, '2014_10_12_100000_create_password_resets_table', 1),
 (3, '2017_11_06_023614_create_models_chats_table', 1),
-(4, '2017_11_06_023720_create_chats_table', 1);
+(4, '2017_11_06_023720_create_chats_table', 1),
+(5, '2017_11_08_143042_create_phonebooks_table', 1);
 
 -- --------------------------------------------------------
 
@@ -85,6 +86,28 @@ CREATE TABLE `password_resets` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `phonebooks`
+--
+
+CREATE TABLE `phonebooks` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `phone_no` int(11) NOT NULL,
+  `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `phonebooks`
+--
+
+INSERT INTO `phonebooks` (`id`, `name`, `phone_no`, `email`, `created_at`, `updated_at`) VALUES
+(1, 'binoy1', 1923334948, 'binoy1@gmail.com', '2017-11-09 21:26:14', '2017-11-09 21:26:14');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
@@ -103,11 +126,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'binoy', 'binoy1@gmail.com', '$2y$10$iq6l6zIe/Tc/xGoZt2JJzuo9vHKkHEWjfKx0VmsuA.iQcMPo4q0Oy', '0FbkmCq9Brt35Vt40Y61So1QAYHkQnnJ3x6LE5ilHTKbNXKzJVKA322C9Tvr', '2017-11-05 21:08:47', '2017-11-05 21:08:47'),
-(2, 'binoy2', 'binoy2@gmail.com', '$2y$10$7zY50hxmMAQcOJJXYZGvme32Vas5tQL4RgNeJOUZuM8VZpY805ie2', 'gVh2mQTq8aaWvKQhSZQfDMtX8Q27PInhhtPpK078xVrYAfPNuTbo5vw3Dtur', '2017-11-05 22:42:34', '2017-11-05 22:42:34'),
-(3, 'binoy3', 'binoy3@gmail.com', '$2y$10$UaWZcYmLch1HZhzJ6FScVuwJxsdm7Cag/Azj5lAg/j0QZS1LKIilS', 'UtIDHHaGzHDBYhlKo5eyCD4J6kZfa1IkMLH1CfI53dp8qQ6DW3Lm7RPSsxfE', '2017-11-05 23:15:41', '2017-11-05 23:15:41'),
-(4, 'binoy4', 'binoy4@gmail.coom', '$2y$10$LH/NX/zrg.OQGSOKDYjihOFt2aCg57Oanyk3iYIWjupcYxzrtlFem', NULL, '2017-11-06 04:04:39', '2017-11-06 04:04:39'),
-(5, 'Binoy5', 'binoy5@gmail.com', '$2y$10$BwVrlSItndU4h6YjJz396uevPv0d44yo9dDUiGptEF6T5DV11K8jG', NULL, '2017-11-06 04:06:35', '2017-11-06 04:06:35');
+(1, 'binoy1', 'binoy1@gmail.com', '$2y$10$UgRuNMsZvX.9KF/ZLCSoz.j5rGVirwOJzaV/K2161BPTw.7ENm75m', 'yuWZHA5e5UQzfeGntdBia9li3Es2DhKMuO5JswhLAuO8aUcTtWs3UjBqZQ31', '2017-11-09 21:11:07', '2017-11-09 21:11:07');
 
 --
 -- Indexes for dumped tables
@@ -138,6 +157,12 @@ ALTER TABLE `password_resets`
   ADD KEY `password_resets_email_index` (`email`);
 
 --
+-- Indexes for table `phonebooks`
+--
+ALTER TABLE `phonebooks`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -157,17 +182,22 @@ ALTER TABLE `chats`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `models_chats`
 --
 ALTER TABLE `models_chats`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
+-- AUTO_INCREMENT for table `phonebooks`
+--
+ALTER TABLE `phonebooks`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;COMMIT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
